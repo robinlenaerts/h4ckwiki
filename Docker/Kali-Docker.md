@@ -11,6 +11,6 @@ My Docker image is based on the Official Kali Linux Rolling repository and inclu
 
 I provide daily builds of this image on [Docker Hub](https://hub.docker.com/r/robincraft007/kali-linux-ssh).
 
-Run this container in Docker: 'docker run -d -p 50022:22 --name kali robincraft007/kali-linux-ssh:<arch>'
+Run this container in Docker: `docker run -d -p 50022:22 --name kali robincraft007/kali-linux-ssh:<arch>`
 
 Connect over SSH to port 50022 of your Docker host with root:kali and enjoy the Kali Linux toolset!
