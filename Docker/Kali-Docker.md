@@ -1,6 +1,6 @@
 # Kali Linux in Docker
 ## Introduction
-Personally I love to use Kali Linux for its wide range of tools that are pre-installed.
+Personally I love using Kali Linux for its wide range of tools that are pre-installed.
 Sometimes I find deploying a full OS in a VM a little too cumbersome and therefor worked on creating my own variant of Kali Linux in Docker.
 The biggest advantage for me of having Kali Linux in Docker is to be able to use tools within seconds, especially when I want to test something quickly.
 
