@@ -1,0 +1,65 @@
+version: "3"
+
+services:
+  php-code-server:
+    container_name: php-code-server
+    image: lscr.io/linuxserver/code-server:latest
+    ports:
+      - 9443:8443
+    volumes:
+      - ./workspace:/config/workspace
+      - ./cs-config:/config
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Etc/CEST
+      - PASSWORD=<web password>
+      - SUDO_PASSWORD=<sudo pasword>
+      - DEFAULT_WORKSPACE=/config/workspace
+      - DOCKER_MODS=linuxserver/mods:code-server-php8
+    restart: unless-stopped
+
+  php-mariadb:
+    container_name: php-mariadb
+    image: lscr.io/linuxserver/mariadb:latest
+    volumes:
+      - ./db-config:/config
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Etc/CEST
+      - MYSQL_ROOT_PASSWORD=<root password>
+      - MYSQL_DATABASE=<database name>
+      - MYSQL_USER=<username>
+      - MYSQL_PASSWORD=<password>
+    restart: unless-stopped
+
+  php-phpmyadmin:
+    container_name: php-phpmyadmin
+    image: lscr.io/linuxserver/phpmyadmin:latest
+    ports:
+      - 9081:80
+    links:
+      - php-mariadb
+    volumes:
+      - ./pma-config:/confug
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Etc/CEST
+      - PMA_ARBITARY=0
+      - PMA_HOST=php-mariadb
+      - PMA_PORT=3306
+    restart: unless-stopped
+
+  php-apache:
+    container_name: php-apache
+    build:
+      dockerfile: Dockerfile-php-apache
+    ports:
+      - 9080:80
+    links:
+      - php-mariadb
+    volumes:
+      - ./workspace:/var/www/html
+    restart: unless-stopped
