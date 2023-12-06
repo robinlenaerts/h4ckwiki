@@ -9,7 +9,7 @@ Install Docker on your server (obviously :D).
 
 Download the `docker-compose.yml` and `Dockerfile-php-apache` files.
 
-Change the credentials in the `docker-compose.yml` file.
+Change the credentials and other configuration options in the `docker-compose.yml` file.
 
 Execute `docker compose up -d` in the directory containing the downloaded files.
 
