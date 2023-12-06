@@ -4,7 +4,9 @@ This project is a first PoC of a Dockerized PHP coding server. It allows for in-
 
 ## Usage
 Install Docker on your server (obviously :D).
+
 > Be aware that this project is made for the amd64 architecture by default.
+
 Download the `docker-compose.yml` and `Dockerfile-php-apache` files.
 Change the credentials in the `docker-compose.yml` file.
 Execute `docker compose up -d` in the directory containing the downloaded files.
